@@ -62,12 +62,12 @@
     {
         "caractere": "し",
         "alphabet": "hiragana",
-        "prononciation": "si"
+        "prononciation": "shi"
     },
     {
         "caractere": "ち",
         "alphabet": "hiragana",
-        "prononciation": "ti"
+        "prononciation": "chi"
     },
     {
         "caractere": "に",
@@ -107,7 +107,7 @@
     {
         "caractere": "つ",
         "alphabet": "hiragana",
-        "prononciation": "tu"
+        "prononciation": "tsu"
     },
     {
         "caractere": "ぬ",
@@ -117,7 +117,7 @@
     {
         "caractere": "ふ",
         "alphabet": "hiragana",
-        "prononciation": "hu"
+        "prononciation": "fu"
     },
     {
         "caractere": "む",
@@ -170,7 +170,7 @@
         "prononciation": "me"
     },
     {
-        "caractere": "め",
+        "caractere": "れ",
         "alphabet": "hiragana",
         "prononciation": "re"
     },
@@ -292,12 +292,12 @@
     {
         "caractere": "シ",
         "alphabet": "katakana",
-        "prononciation": "si"
+        "prononciation": "shi"
     },
     {
         "caractere": "チ",
         "alphabet": "katakana",
-        "prononciation": "ti"
+        "prononciation": "chi"
     },
     {
         "caractere": "ニ",
@@ -337,7 +337,7 @@
     {
         "caractere": "ツ",
         "alphabet": "katakana",
-        "prononciation": "tu"
+        "prononciation": "tsu"
     },
     {
         "caractere": "ヌ",
@@ -347,7 +347,7 @@
     {
         "caractere": "フ",
         "alphabet": "katakana",
-        "prononciation": "hu"
+        "prononciation": "fu"
     },
     {
         "caractere": "ム",
