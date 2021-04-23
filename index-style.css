@@ -1,0 +1,85 @@
+@font-face {
+    font-family: Evogria;
+    src: url('fonts/Evogria.otf');
+}
+@font-face {
+    font-family: Sofia;
+    src: url('fonts/Sofia.otf');
+}
+@font-face {
+    font-family: Blanch;
+    src: url('fonts/Blanch.otf');
+}
+@font-face {
+    font-family: KaushanScript;
+    src: url('fonts/KaushanScript.otf');
+}
+@font-face {
+    font-family: ConfigCondensed;
+    src: url('fonts/ConfigCondensed.otf');
+}
+@font-face {
+    font-family: Bahnschrift;
+    src: url('fonts/Bahnschrift.ttf');
+}
+
+:root {
+    --light-color: #404040ff;
+    --dark-color: #262626ff;
+}
+
+html {
+    background-color: var(--dark-color);
+}
+
+body {
+    -webkit-user-select: none;
+    -moz-user-select:-moz-none;
+    -ms-user-select:none;
+    user-select:none}
+
+body {
+    margin: 0;
+}
+
+#tile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    height: 100vh;
+    width: 100vw;
+    text-align: center;
+}
+
+#content {
+    height: calc(480px*1.5);
+    width: 480px;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+#caractere {
+    margin-top: 230px;
+    font-size: 150px;
+}
+
+#pron {
+    display: none;
+    margin-top: 50px;
+    font-family: Bahnschrift;
+    font-size: 50px;
+}
+
+#content:active #pron {
+    display: block;
+}
+
+#back-button {
+    margin-right: 70px;
+    height: 70px;
+    width: 70px;
+    background-color: white;
+    border-radius: 70px;
+}
