@@ -78,8 +78,35 @@ body {
 
 #back-button {
     margin-right: 70px;
+    margin-left: 70px;
     height: 70px;
     width: 70px;
     background-color: white;
     border-radius: 70px;
+}
+
+#slider {
+    background-color: white;
+    margin-top: 50px;
+    height: 15px;
+    width: 150px;
+    border-radius: 15px;
+}
+
+#choser {
+    height: 15px;
+    width: 50px;
+    border-radius: 15px;
+    background-color: red;
+    margin-left: 0px;
+    transition-duration: 0.5s
+}
+
+#container {
+    position: absolute;
+    height: 15px;
+    width: 150px;
+    top: 50px;
+    display: flex;
+    justify-content: space-around;
 }

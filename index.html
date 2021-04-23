@@ -16,29 +16,91 @@
 		});
 
         var appendContent=function(){
-            fetch('https://alwaysmoreflowers.github.io/amf/liste-kanaaa.json')
+            fetch('https://alwaysmoreflowers.github.io/kanaaa/liste-kanaaa.json')
                 .then(function (response) {
                     return response.json();
                 })
                 .then(function (data) {
-                            appendData(data);
+                            sessionStorage.setItem('data', JSON.stringify(data));
+                            setupData();
                 })
                 .catch(function (err) {
                     console.log('error: ' + err);
                 });
         };
 
-        function appendData(data) {
-            i = Math.floor(Math.random() * data.length)
-            document.getElementById("tile").innerHTML = "<div id='back-button' onclick='goBack();'></div><div id='content'><div id='caractere'>"+data[i].caractere+"</div><div id='pron'>"+data[i].prononciation+"</div></div>";
+        function setupData() {
+            data = JSON.parse(sessionStorage.getItem('data'));
+            ordre = []
+            if(sessionStorage.getItem('type') == "all" || !sessionStorage.getItem('type')) {
+                for (i = 0; i < 15; i++) {
+                    ordre.push(Math.floor(Math.random() * data.length))
+                }
+            } else if(sessionStorage.getItem('type') == "hiragana") {
+                for (i = 0; i < 15; i++) {
+                    ordre.push(Math.floor(Math.random() * 46))
+                }
+            } else if(sessionStorage.getItem('type') == "katakana") {
+                for (i = 0; i < 15; i++) {
+                    ordre.push((Math.floor(Math.random() * 46) + 46))
+                }
+            }
+            console.log(ordre);
+            sessionStorage.setItem('ordre', JSON.stringify(ordre));
+            sessionStorage.setItem('current', 0);
+            document.getElementById("tile").innerHTML = "<div id='back-button' onclick='goBack();'></div><div id='content'><div id='caractere'>"+data[ordre[0]].caractere+"</div><div id='pron'>"+data[ordre[0]].prononciation+"</div></div><div id='back-button' onclick='goForth();'></div>";
+        }
+
+        function updateData(status) {
+            data = JSON.parse(sessionStorage.getItem('data'));
+            ordre = JSON.parse(sessionStorage.getItem('ordre'));
+            current =  (parseInt(sessionStorage.getItem('current', 0)) + status);
+            sessionStorage.setItem('current', current);
+            document.getElementById("tile").innerHTML = "<div id='back-button' onclick='goBack();'></div><div id='content'><div id='caractere'>"+data[ordre[current]].caractere+"</div><div id='pron'>"+data[ordre[current]].prononciation+"</div></div><div id='back-button' onclick='goForth();'></div>";
+        }
+
+        function goForth() {
+            if(parseInt(sessionStorage.getItem('current')) == 14) {
+                updateData(0);
+            } else {
+                updateData(1);
+            }
         }
 
         function goBack() {
-            appendContent();
+            if(parseInt(sessionStorage.getItem('current')) == 0) {
+                updateData(0);
+            } else {
+                updateData(-1);
+            }
+        }
+
+        function move(where) {
+            if(where == "1") {
+                document.getElementById('choser').style.marginLeft = '0px';
+                sessionStorage.setItem('type', "all");
+                setupData("all");
+            } else if(where == "2") {
+                document.getElementById('choser').style.marginLeft = '50px';
+                sessionStorage.setItem('type', "hiragana");
+                setupData("hiragana");
+            } else if(where == "3") {
+                document.getElementById('choser').style.marginLeft = '100px';
+                sessionStorage.setItem('type', "katakana");
+                setupData("katakana");
+            }
         }
     </script>
 </head>
 <body>
+    <div id="slider">
+        <div id="choser"></div>
+        <div id="container">
+            <div id="slider1" onclick="move('1')">hi 1</div>
+            <div id="slider2" onclick="move('2')">hi 2</div>
+            <div id="slider3" onclick="move('3')">hi 3</div>
+        </div>
+    </div>
     <div id="tile">
     </div>
 </body>
