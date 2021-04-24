@@ -78,14 +78,23 @@
         function move(where) {
             if(where == "1") {
                 document.getElementById('choser').style.marginLeft = '0px';
+                document.getElementById('slider1').style.color = 'white';
+                document.getElementById('slider2').style.color = 'black';
+                document.getElementById('slider3').style.color = 'black';
                 sessionStorage.setItem('type', "all");
                 setupData("all");
             } else if(where == "2") {
-                document.getElementById('choser').style.marginLeft = '50px';
+                document.getElementById('choser').style.marginLeft = '150px';
+                document.getElementById('slider2').style.color = 'white';
+                document.getElementById('slider3').style.color = 'black';
+                document.getElementById('slider1').style.color = 'black';
                 sessionStorage.setItem('type', "hiragana");
                 setupData("hiragana");
             } else if(where == "3") {
-                document.getElementById('choser').style.marginLeft = '100px';
+                document.getElementById('choser').style.marginLeft = '300px';
+                document.getElementById('slider3').style.color = 'white';
+                document.getElementById('slider2').style.color = 'black';
+                document.getElementById('slider1').style.color = 'black';
                 sessionStorage.setItem('type', "katakana");
                 setupData("katakana");
             }
@@ -96,12 +105,14 @@
     <div id="slider">
         <div id="choser"></div>
         <div id="container">
-            <div id="slider1" onclick="move('1')">hi 1</div>
-            <div id="slider2" onclick="move('2')">hi 2</div>
-            <div id="slider3" onclick="move('3')">hi 3</div>
+            <div id="slider1" onclick="move('1')">all</div>
+            <div id="slider2" onclick="move('2')">hiragana</div>
+            <div id="slider3" onclick="move('3')">katakana</div>
         </div>
     </div>
     <div id="tile">
+    </div>
+    <div id="actualiser" onclick="setupData();">
     </div>
 </body>
 </html>
