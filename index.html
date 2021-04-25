@@ -30,6 +30,7 @@
         };
 
         function setupData() {
+            document.getElementById('progress-bar').style.width = 300/15+"px";
             data = JSON.parse(sessionStorage.getItem('data'));
             ordre = []
             if(sessionStorage.getItem('type') == "all" || !sessionStorage.getItem('type')) {
