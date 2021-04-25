@@ -76,8 +76,8 @@ body {
 #back-button {
     margin-right: 3vw;
     margin-left: 3vw;
-    height: clamp(3vw, 4vw, 7vw);
-    width: clamp(3vw, 4vw, 7vw);
+    height: clamp(40px, 4vw, 7vw);
+    width: clamp(40px, 4vw, 7vw);
     border-radius: 70px;
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
@@ -86,8 +86,8 @@ body {
 #forth-button {
     margin-right: 3vw;
     margin-left: 3vw;
-    height: clamp(3vw, 4vw, 7vw);
-    width: clamp(3vw, 4vw, 7vw);
+    height: clamp(40px, 4vw, 7vw);
+    width: clamp(40px, 4vw, 7vw);
     border-radius: 70px;
 }
 
@@ -160,5 +160,5 @@ body {
 }
 
 #shuffle {
-    height: 3vw;
+    height: clamp(45px, 4vw, 7vw);
 }
