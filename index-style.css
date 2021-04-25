@@ -149,13 +149,11 @@ body {
 }
 
 #actualiser {
+    display: flex;
     text-align: center;
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
     margin-top: 30px;
-    height: 3vw;
-    width: 3vw;
+    width: 100vw;
+    justify-content: center;
     border-radius: 50px;
 }
 
