@@ -67,8 +67,11 @@
             } else if(parseInt(sessionStorage.getItem('current')) == 13) {
                 updateData(1)
                 document.getElementById('forth-button').style.filter = 'opacity(0%)';
+                document.getElementById('progress-bar').style.width = "300px";
             } else {
                 updateData(1);
+                width = 300/15*(parseInt(sessionStorage.getItem('current'))+1)+"px"
+                document.getElementById('progress-bar').style.width = width;
             }
         }
 
@@ -79,8 +82,12 @@
             } else if(parseInt(sessionStorage.getItem('current')) == 1) {
                 updateData(-1);
                 document.getElementById('back-button').style.filter = 'opacity(0%)';
+                width = 300/15+"px"
+                document.getElementById('progress-bar').style.width = width;
             } else {
                 updateData(-1);
+                width = 300/15*(parseInt(sessionStorage.getItem('current'))+1)+"px"
+                document.getElementById('progress-bar').style.width = width;
             }
         }
 
@@ -120,6 +127,12 @@
         </div>
     </div>
     <div id="tile">
+    </div>
+    <div id="progress">
+        <div id="progress-back">
+            <div id="progress-bar">
+            </div>
+    </div>
     </div>
     <div id="actualiser" onclick="setupData();">
         <img id="shuffle" src='imgs/shuffle.png'>
