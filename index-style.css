@@ -76,8 +76,8 @@ body {
 #back-button {
     margin-right: 3vw;
     margin-left: 3vw;
-    height: clamp(3vw, 5vw, 10vw);
-    width: clamp(3vw, 5vw, 10vw);
+    height: clamp(3vw, 4vw, 7vw);
+    width: clamp(3vw, 4vw, 7vw);
     border-radius: 70px;
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
@@ -86,18 +86,9 @@ body {
 #forth-button {
     margin-right: 3vw;
     margin-left: 3vw;
-    height: clamp(3vw, 5vw, 10vw);
-    width: clamp(3vw, 5vw, 10vw);
+    height: clamp(3vw, 4vw, 7vw);
+    width: clamp(3vw, 4vw, 7vw);
     border-radius: 70px;
-}
-
-#no-button {
-    margin-right: 3vw;
-    margin-left: 3vw;
-    height: clamp(3vw, 5vw, 10vw);
-    width: clamp(3vw, 5vw, 10vw);
-    border-radius: 70px;
-    background-color: var(--light-color);
 }
 
 #slider {
@@ -108,14 +99,14 @@ body {
     margin-left: auto;
     margin-right: auto;
     height: 30px;
-    width: 450px;
+    width: 360px;
     border-radius: 15px;
     font-family: Bahnschrift;
 }
 
 #choser {
     height: 30px;
-    width: 150px;
+    width: 120px;
     border-radius: 15px;
     background-color: var(--dark-color);
     margin-left: 0px;
@@ -125,7 +116,7 @@ body {
 #container {
     position: absolute;
     height: 30px;
-    width: 450px;
+    width: 360px;
     top: 55px;
     display: flex;
     justify-content: space-around;
@@ -158,12 +149,16 @@ body {
 }
 
 #actualiser {
+    text-align: center;
     display: block;
     margin-right: auto;
     margin-left: auto;
     margin-top: 30px;
-    background-color: white;
-    height: 70px;
-    width: 70px;
+    height: 3vw;
+    width: 3vw;
     border-radius: 50px;
+}
+
+#shuffle {
+    height: 3vw;
 }
