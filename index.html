@@ -48,7 +48,8 @@
             console.log(ordre);
             sessionStorage.setItem('ordre', JSON.stringify(ordre));
             sessionStorage.setItem('current', 0);
-            document.getElementById("tile").innerHTML = "<div id='back-button' onclick='goBack();'></div><div id='content'><div id='caractere'>"+data[ordre[0]].caractere+"</div><div id='pron'>"+data[ordre[0]].prononciation+"</div></div><div id='back-button' onclick='goForth();'></div>";
+            document.getElementById("tile").innerHTML = "<img src='imgs/arrow.png' id='back-button' onclick='goBack();'><div id='content'><div id='caractere'>"+data[ordre[0]].caractere+"</div><div id='pron'>"+data[ordre[0]].prononciation+"</div></div><img src='imgs/arrow.png' id='forth-button' onclick='goForth();'>";
+            document.getElementById('back-button').style.filter = 'opacity(0%)';
         }
 
         function updateData(status) {
@@ -56,12 +57,16 @@
             ordre = JSON.parse(sessionStorage.getItem('ordre'));
             current =  (parseInt(sessionStorage.getItem('current', 0)) + status);
             sessionStorage.setItem('current', current);
-            document.getElementById("tile").innerHTML = "<div id='back-button' onclick='goBack();'></div><div id='content'><div id='caractere'>"+data[ordre[current]].caractere+"</div><div id='pron'>"+data[ordre[current]].prononciation+"</div></div><div id='back-button' onclick='goForth();'></div>";
+            document.getElementById("tile").innerHTML = "<img src='imgs/arrow.png' id='back-button' onclick='goBack();'><div id='content'><div id='caractere'>"+data[ordre[current]].caractere+"</div><div id='pron'>"+data[ordre[current]].prononciation+"</div></div><img src='imgs/arrow.png' id='forth-button' onclick='goForth();'>";
         }
 
         function goForth() {
             if(parseInt(sessionStorage.getItem('current')) == 14) {
                 updateData(0);
+                document.getElementById('forth-button').style.filter = 'opacity(0%)';
+            } else if(parseInt(sessionStorage.getItem('current')) == 13) {
+                updateData(1)
+                document.getElementById('forth-button').style.filter = 'opacity(0%)';
             } else {
                 updateData(1);
             }
@@ -70,6 +75,10 @@
         function goBack() {
             if(parseInt(sessionStorage.getItem('current')) == 0) {
                 updateData(0);
+                document.getElementById('back-button').style.filter = 'opacity(0%)';
+            } else if(parseInt(sessionStorage.getItem('current')) == 1) {
+                updateData(-1);
+                document.getElementById('back-button').style.filter = 'opacity(0%)';
             } else {
                 updateData(-1);
             }

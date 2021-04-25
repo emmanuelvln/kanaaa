@@ -78,8 +78,26 @@ body {
     margin-left: 3vw;
     height: clamp(3vw, 5vw, 10vw);
     width: clamp(3vw, 5vw, 10vw);
-    background-color: white;
     border-radius: 70px;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+#forth-button {
+    margin-right: 3vw;
+    margin-left: 3vw;
+    height: clamp(3vw, 5vw, 10vw);
+    width: clamp(3vw, 5vw, 10vw);
+    border-radius: 70px;
+}
+
+#no-button {
+    margin-right: 3vw;
+    margin-left: 3vw;
+    height: clamp(3vw, 5vw, 10vw);
+    width: clamp(3vw, 5vw, 10vw);
+    border-radius: 70px;
+    background-color: var(--light-color);
 }
 
 #slider {
