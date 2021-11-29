@@ -58,7 +58,7 @@ body {
 }
 
 #caractere {
-    margin-top: 230px;
+    margin-top: 200px;
     font-size: 150px;
 }
 
@@ -94,6 +94,18 @@ body {
 #slider {
     background-color: white;
     margin-top: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 30px;
+    width: 360px;
+    border-radius: 15px;
+    font-family: Bahnschrift;
+}
+
+#mainslider2 {
+    background-color: white;
+    margin-top: 30px;
     margin-bottom: 50px;
     display: block;
     margin-left: auto;
@@ -113,6 +125,15 @@ body {
     transition-duration: 0.25s
 }
 
+#choser2 {
+    height: 30px;
+    width: 90px;
+    border-radius: 15px;
+    background-color: var(--dark-color);
+    margin-left: 0px;
+    transition-duration: 0.25s
+}
+
 #container {
     position: absolute;
     height: 30px;
@@ -123,13 +144,23 @@ body {
     text-align: center;
 }
 
-#slider1, #slider2, #slider3 {
+#container2 {
+    position: absolute;
+    height: 30px;
+    width: 360px;
+    top: 115px;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+#slider1, #slider2, #slider3, #slider4, #slider5, #slider6, #slider7 {
     width: 150px;
     cursor: pointer;
     color: black;
 }
 
-#slider1 {
+#slider1, #slider4 {
     color: white;
 }
 

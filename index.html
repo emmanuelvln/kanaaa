@@ -22,6 +22,8 @@
                 })
                 .then(function (data) {
                             sessionStorage.setItem('data', JSON.stringify(data));
+                            sessionStorage.setItem('alphabet', "all");
+                            sessionStorage.setItem('diacritique', "none");
                             setupData();
                 })
                 .catch(function (err) {
@@ -29,36 +31,108 @@
                 });
         };
 
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+
         function setupData() {
             document.getElementById('progress-bar').style.width = 300/15+"px";
             data = JSON.parse(sessionStorage.getItem('data'));
-            ordre = []
-            if(sessionStorage.getItem('type') == "all" || !sessionStorage.getItem('type')) {
-                for (i = 0; i < 15; i++) {
-                    ordre.push(Math.floor(Math.random() * data.length))
+            ordre = [];
+
+            alphabet = sessionStorage.getItem('alphabet');
+            diacritique = sessionStorage.getItem('diacritique');
+
+            for (i=0; i<15; i++) {
+
+                rand = getRandomInt(data.length);
+
+                if (alphabet == "all") {
+                    if (getRandomInt(2) == 0) {
+                        cara = data[rand].hiragana;
+                    }
+                    else {
+                        cara = data[rand].katakana;
+                    }
                 }
-            } else if(sessionStorage.getItem('type') == "hiragana") {
-                for (i = 0; i < 15; i++) {
-                    ordre.push(Math.floor(Math.random() * 46))
+                else if (alphabet == "hiragana") {
+                    cara = data[rand].hiragana;
                 }
-            } else if(sessionStorage.getItem('type') == "katakana") {
-                for (i = 0; i < 15; i++) {
-                    ordre.push((Math.floor(Math.random() * 46) + 46))
+                else {
+                    cara = data[rand].katakana;
                 }
+
+                if (diacritique == "maru") {
+                    if (data[rand].maru) {
+                        pron = data[rand].maru;
+                        cara = cara+"゜";
+                    }
+                    else {
+                        pron = data[rand].prononciation;
+                    }
+                }
+                else if (diacritique == "tenten") {
+                    if (data[rand].tenten) {
+                        pron = data[rand].tenten;
+                        cara = cara+"゛";
+                    }
+                    else {
+                        pron = data[rand].prononciation;
+                    }
+                }
+                else if (diacritique == "both") {
+                    if (getRandomInt(2) == 0) {
+                        if (data[rand].tenten) {
+                            pron = data[rand].tenten;
+                            cara = cara+"゛";
+                        }
+                        else {
+                            pron = data[rand].prononciation;
+                        }
+                    }
+                    else {
+                        if (data[rand].maru) {
+                            pron = data[rand].maru;
+                            cara = cara+"゜";
+                        }
+                        else {
+                            pron = data[rand].prononciation;
+                        }
+                    }
+                }
+                else {
+                    pron = data[rand].prononciation;
+                }
+
+                ordre.push([rand,cara,pron]);
             }
-            console.log(ordre);
+
+            document.getElementById("tile").innerHTML = "<img src='imgs/arrow.png' id='back-button' onclick='goBack();'><div id='content'><div id='caractere'>"+ordre[0][1]+"</div><div id='pron'>"+ordre[0][2]+"</div></div><img src='imgs/arrow.png' id='forth-button' onclick='goForth();'>";
+
+            if (ordre[0][1].length == 2) {
+                document.getElementById("caractere").style.marginLeft = "80px";
+            }
+
             sessionStorage.setItem('ordre', JSON.stringify(ordre));
+
             sessionStorage.setItem('current', 0);
-            document.getElementById("tile").innerHTML = "<img src='imgs/arrow.png' id='back-button' onclick='goBack();'><div id='content'><div id='caractere'>"+data[ordre[0]].caractere+"</div><div id='pron'>"+data[ordre[0]].prononciation+"</div></div><img src='imgs/arrow.png' id='forth-button' onclick='goForth();'>";
+            
             document.getElementById('back-button').style.filter = 'opacity(0%)';
         }
 
         function updateData(status) {
-            data = JSON.parse(sessionStorage.getItem('data'));
+
             ordre = JSON.parse(sessionStorage.getItem('ordre'));
+
             current =  (parseInt(sessionStorage.getItem('current', 0)) + status);
+
             sessionStorage.setItem('current', current);
-            document.getElementById("tile").innerHTML = "<img src='imgs/arrow.png' id='back-button' onclick='goBack();'><div id='content'><div id='caractere'>"+data[ordre[current]].caractere+"</div><div id='pron'>"+data[ordre[current]].prononciation+"</div></div><img src='imgs/arrow.png' id='forth-button' onclick='goForth();'>";
+
+            document.getElementById("tile").innerHTML = "<img src='imgs/arrow.png' id='back-button' onclick='goBack();'><div id='content'><div id='caractere'>"+ordre[current][1]+"</div><div id='pron'>"+ordre[current][2]+"</div></div><img src='imgs/arrow.png' id='forth-button' onclick='goForth();'>";
+
+            if (ordre[current][1].length == 2) {
+                document.getElementById("caractere").style.marginLeft = "80px";
+            }
         }
 
         function goForth() {
@@ -98,24 +172,61 @@
                 document.getElementById('slider1').style.color = 'white';
                 document.getElementById('slider2').style.color = 'black';
                 document.getElementById('slider3').style.color = 'black';
-                sessionStorage.setItem('type', "all");
-                setupData("all");
+                sessionStorage.setItem('alphabet', "all");
+                setupData();
             } else if(where == "2") {
                 document.getElementById('choser').style.marginLeft = '120px';
                 document.getElementById('slider2').style.color = 'white';
                 document.getElementById('slider3').style.color = 'black';
                 document.getElementById('slider1').style.color = 'black';
-                sessionStorage.setItem('type', "hiragana");
-                setupData("hiragana");
+                sessionStorage.setItem('alphabet', "hiragana");
+                setupData();
             } else if(where == "3") {
                 document.getElementById('choser').style.marginLeft = '240px';
                 document.getElementById('slider3').style.color = 'white';
                 document.getElementById('slider2').style.color = 'black';
                 document.getElementById('slider1').style.color = 'black';
-                sessionStorage.setItem('type', "katakana");
-                setupData("katakana");
+                sessionStorage.setItem('alphabet', "katakana");
+                setupData();
             }
         }
+
+        function move2(where) {
+            if(where == "1") {
+                document.getElementById('choser2').style.marginLeft = '0px';
+                document.getElementById('slider4').style.color = 'white';
+                document.getElementById('slider5').style.color = 'black';
+                document.getElementById('slider6').style.color = 'black';
+                document.getElementById('slider7').style.color = 'black';
+                sessionStorage.setItem('diacritique', "none");
+                setupData();
+            } else if(where == "2") {
+                document.getElementById('choser2').style.marginLeft = '90px';
+                document.getElementById('slider5').style.color = 'white';
+                document.getElementById('slider4').style.color = 'black';
+                document.getElementById('slider6').style.color = 'black';
+                document.getElementById('slider7').style.color = 'black';
+                sessionStorage.setItem('diacritique', "tenten");
+                setupData();
+            } else if(where == "3") {
+                document.getElementById('choser2').style.marginLeft = '180px';
+                document.getElementById('slider6').style.color = 'white';
+                document.getElementById('slider5').style.color = 'black';
+                document.getElementById('slider4').style.color = 'black';
+                document.getElementById('slider7').style.color = 'black';
+                sessionStorage.setItem('diacritique', "maru");
+                setupData();
+            }else if(where == "4") {
+                document.getElementById('choser2').style.marginLeft = '270px';
+                document.getElementById('slider7').style.color = 'white';
+                document.getElementById('slider5').style.color = 'black';
+                document.getElementById('slider6').style.color = 'black';
+                document.getElementById('slider4').style.color = 'black';
+                sessionStorage.setItem('diacritique', "both");
+                setupData();
+            }
+        }
+
     </script>
 </head>
 <body>
@@ -125,6 +236,15 @@
             <div id="slider1" onclick="move('1')">all</div>
             <div id="slider2" onclick="move('2')">hiragana</div>
             <div id="slider3" onclick="move('3')">katakana</div>
+        </div>
+    </div>
+    <div id="mainslider2">
+        <div id="choser2"></div>
+        <div id="container2">
+            <div id="slider4" onclick="move2('1')">none</div>
+            <div id="slider5" onclick="move2('2')">ten-ten</div>
+            <div id="slider6" onclick="move2('3')">handakuten</div>
+            <div id="slider7" onclick="move2('4')">both</div>
         </div>
     </div>
     <div id="tile">
