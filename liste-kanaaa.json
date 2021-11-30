@@ -130,7 +130,8 @@
     {
         "hiragana": "ふ",
         "katakana": "フ",
-        "prononciation": "fu"
+        "prononciation": "fu",
+        "tenten": "bu"
     },
     {
         "hiragana": "む",
@@ -178,7 +179,7 @@
     {
         "hiragana": "へ",
         "katakana": "ヘ",
-        "pronongaciation": "he",
+        "prononciation": "he",
         "tenten": "be",
         "maru": "pe"
     },
