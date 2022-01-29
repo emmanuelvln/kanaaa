@@ -1,0 +1,82 @@
+@font-face {
+    font-family: Evogria;
+    src: url('fonts/Evogria.otf');
+}
+@font-face {
+    font-family: Sofia;
+    src: url('fonts/Sofia.otf');
+}
+@font-face {
+    font-family: Blanch;
+    src: url('fonts/Blanch.otf');
+}
+@font-face {
+    font-family: KaushanScript;
+    src: url('fonts/KaushanScript.otf');
+}
+@font-face {
+    font-family: ConfigCondensed;
+    src: url('fonts/ConfigCondensed.otf');
+}
+@font-face {
+    font-family: Bahnschrift;
+    src: url('fonts/Bahnschrift.TTF');
+}
+
+:root {
+    --light-color: rgb(57, 57, 94);
+    --dark-color: #262626ff;
+}
+
+html {
+    background-color: var(--light-color);
+}
+
+body {
+    background-color: var(--light-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.base {
+    background-color: teal;
+    position: relative;
+    height: 50px;
+    width: 50px;
+    top: 5px;
+    left: 5px;
+    cursor: pointer;
+}
+
+.tenu {
+    border: solid 5px #ccc;
+}
+
+.case {
+
+}
+
+.hovered {
+    background-color: white;
+}
+
+.cadre {
+    height: 300px;
+    width: 300px;
+    background-color: gray;
+    display: flex;
+}
+
+#left-part, #middle-part, #right-part {
+    height: 300px;
+    width: 100px;
+    margin: 0;
+}
+
+#upper-part, #central-part, #lower-part {
+    height: 100px;
+    width: 100px;
+    margin: 0;
+}
